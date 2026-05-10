@@ -10,8 +10,16 @@ const app = express();
 
 
 app.use(express.json());
-app.use(clerkMiddleware())
+
+// Request Logger to check if Inngest is hitting the server
+// app.use((req, res, next) => {
+//     console.log("🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴");
+//     console.log(`${req.method} ${req.url}`);
+//     next();
+// });
+
 app.use("/api/inngest", serve({ client: inngest, functions }));
+app.use(clerkMiddleware())
 
 app.get("/", (req, res) => {
     res.send("Hello World!123")
