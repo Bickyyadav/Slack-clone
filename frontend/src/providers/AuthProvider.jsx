@@ -1,8 +1,12 @@
 import { useAuth } from "@clerk/react";
-import { useEffect } from "react";
+import { useEffect, createContext } from "react";
+import toast from "react-hot-toast";
+import { axiosInstance } from "../lib/axios.js";
+
+const AuthContext = createContext({});
 
 
-export default function AuthProvider() {
+export default function AuthProvider({ children }) {
     const { getToken } = useAuth();
 
     useEffect(() => {
