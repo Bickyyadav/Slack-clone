@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { ClerkProvider } from '@clerk/react'
+import { BrowserRouter } from 'react-router'
+
 const publishableKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 if (!publishableKey) {
   throw new Error("Missing Clerk Publishable Key")
@@ -13,7 +15,9 @@ if (!publishableKey) {
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ClerkProvider publishableKey={publishableKey}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ClerkProvider>
   </StrictMode>,
 )
